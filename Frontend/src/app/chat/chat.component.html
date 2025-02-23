@@ -1,0 +1,52 @@
+<div class="chat-container full-height">
+  <div class="chat-header">Chat</div>
+  <div class="chat-window" #chatWindow>
+    <div *ngIf="messages.length > 0; else noMessages" class="messages">
+      <div
+        *ngFor="let message of messages"
+        [ngClass]="{
+          'user-message': message.sender === 'user',
+          'system-message': message.sender === 'system'
+        }"
+      >
+        <markdown
+          [data]="message.text"
+          class="flex flex-col"
+          [ngClass]="{ 'loading-dots': message.text === '' && loading }"
+        ></markdown>
+        <small *ngIf="message?.sources?.length" class="chat-sources">
+          <b>Sources</b>:
+          <p-tag
+            icon="pi pi-image"
+            *ngFor="let source of message.sources"
+            severity="secondary"
+            [value]="source"
+          />
+        </small>
+      </div>
+    </div>
+    <ng-template #noMessages>
+      <div class="no-messages">
+        <p class="text-slate-500 italic">Ask your questions!</p>
+      </div>
+    </ng-template>
+  </div>
+  <div class="chat-input">
+    <textarea
+      #userInputField
+      pTextarea
+      [disabled]="inputDisabled"
+      [(ngModel)]="userInput"
+      rows="3"
+      placeholder="Type your message..."
+      (keyup.enter)="sendMessage()"
+      tabindex="1"
+    ></textarea>
+  </div>
+  <div
+    class="flex items-center gap-2 p-2 w-full justify-end text-sm relative z-10 -mt-9 text-[--p-text-muted-color]"
+  >
+    <p-checkbox [(ngModel)]="useRelevantContext" [binary]="true" size="small" />
+    <span>Only use relevant context</span>
+  </div>
+</div>

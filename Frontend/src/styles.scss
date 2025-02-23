@@ -1,0 +1,25 @@
+@import "primeicons/primeicons.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --user-bubble-background: #fef3c7; // --p-amber-100
+  --system-bubble-background: #eff6ff; // --p-blue-50
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-bubble-background: #d97706; // --p-amber-600
+    --system-bubble-background: #3b82f6; // --p-blue-500
+  }
+}
+
+.header {
+  --p-toolbar-background: #8626c3;
+  --p-toolbar-color: aliceblue;
+}
+
+.p-steppanels{
+    --p-stepper-steppanels-padding:0;
+}

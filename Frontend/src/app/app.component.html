@@ -1,0 +1,74 @@
+<p-toolbar styleClass="header">
+  <ng-template #start>
+    <div class="flex items-center ml-4">
+      <i class="pi pi-microchip-ai mr-2"></i>
+      <span class="text-lg pb-1">Flowchart Query System</span>
+    </div>
+  </ng-template>
+
+  <ng-template #end>
+    <div class="flex items-center gap-2 mr-4">
+      <a href="https://github.com/AniruddhaSadhukhan" target="_blank">
+        <i class="pi pi-github"></i>
+      </a>
+    </div>
+  </ng-template>
+</p-toolbar>
+<div class="m-2">
+  <p-stepper [value]="1" class="basis-[50rem]">
+    <p-step-list class="steplist">
+      <p-step [value]="1">Upload</p-step>
+      <p-step [value]="2">Visualize & Chat</p-step>
+    </p-step-list>
+    <p-step-panels>
+      <p-step-panel [value]="1">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex flex-col h-[78vh] px-16 pt-16">
+            <app-upload></app-upload>
+          </div>
+        </ng-template>
+      </p-step-panel>
+
+      <p-step-panel [value]="2">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex flex-col h-[78vh]">
+            <div class="card h-full">
+              <p-splitter [panelSizes]="[65, 35]" styleClass="h-full">
+                <ng-template pTemplate>
+                  <div class="w-full h-full flex flex-col">
+                    <div class="flex flex-col flex-1">
+                      <div class="flex w-full justify-between gap-2 p-2.5">
+                        <div class="text-lg">
+                          <i class="pi pi-sitemap mr-2"></i>
+                          <span class="">Relation Diagram</span>
+                        </div>
+                        <div class="text-sm text-[--p-text-muted-color]">
+                          <p-checkbox
+                            [(ngModel)]="showRelevantImages"
+                            [binary]="true"
+                            size="small"
+                            class="mr-2"
+                          />
+                          <span>Show relevant segments</span>
+                        </div>
+                      </div>
+                      <app-graph
+                        class="flex flex-1"
+                        [showRelevantImages]="showRelevantImages"
+                      ></app-graph>
+                    </div>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate>
+                  <div class="flex items-center justify-center h-full w-full">
+                    <app-chat class="h-full w-full"></app-chat>
+                  </div>
+                </ng-template>
+              </p-splitter>
+            </div>
+          </div>
+        </ng-template>
+      </p-step-panel>
+    </p-step-panels>
+  </p-stepper>
+</div>

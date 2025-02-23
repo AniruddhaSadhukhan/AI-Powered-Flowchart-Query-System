@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.upload {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.p-avatar {
+  cursor: pointer;
+}
+
+.show-relevant-container {
+  top: 6px;
+  padding-right: 15px;
+}
+
+.chat {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.right-panel {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.steplist {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-bottom: 5px;
+}
+
+.graph-panel {
+  --p-tabs-tabpanel-padding: 0;
+}
+
+.graph-tab {
+  --p-tabs-tab-padding: 0.75rem 1.125rem;
+  font-size: small;
+}
+
+.pi-github {
+  font-size: larger;
+}
